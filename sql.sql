@@ -12,4 +12,4 @@ CREATE TABLE IF NOT EXISTS `preference` (
   `setting` text NOT NULL,
   `active` boolean NOT NULL,
   PRIMARY KEY (`id`)
-)
+);
