@@ -1,16 +1,16 @@
 ﻿<!-- feito por Lucas Vieira -->
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"> 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="libs/bootstrap/css/bootstrap.min.css">
-    <script type="text/JavaScript" src="js/utilFunctions.js"></script> 
-    <script type="text/JavaScript" src="libs/jquery/jquery-1.11.1.min.js"></script> 
-    <script type="text/JavaScript" src="libs/jquery/jquery.cookie.js"></script> 
+    <script type="text/JavaScript" src="js/utilFunctions.js"></script>
+    <script type="text/JavaScript" src="libs/jquery/jquery-1.11.1.min.js"></script>
+    <script type="text/JavaScript" src="libs/jquery/jquery.cookie.js"></script>
     <script type="text/JavaScript" src="libs/tablesorter/jquery.tablesorter.min.js"></script>
   </head>
  <body class="container">
-  <a href="configs.html" class="btn btn-primary">Edit Configs</a>
+  <a href="configs.php" class="btn btn-primary">Edit Configs</a>
     <table class="table table-striped table-bordered table-condensed" id="myTable">
       <script type="text/javascript">
       /* GET ALL THE PROPERTIES FOUND ON PACIENTE AND PRINT ON HTML LIKE A JSON
@@ -25,7 +25,7 @@
 
 
       document.write("<thead><tr>");
-        
+
       var allowedKeys = [];
 
       // creates the columns of the table
@@ -41,7 +41,7 @@
 
       document.write("<tbody>");
       // populates the table with the patient
-      xmlDoc = loadXMLFile("resource/paciente_doentesNovos_2011'02'04'12h58min_backup.xml"); 
+      xmlDoc = loadXMLFile("resource/paciente_doentesNovos_2011'02'04'12h58min_backup.xml");
       var x = xmlDoc.getElementsByTagName("paciente");
       for (var i = 0; i < x.length; i++) {
         document.write("<tr class=\"input-sm\">");
@@ -55,12 +55,12 @@
         document.write("</tr>");
       };
       document.write("</tbody>");
-      
-      $(document).ready(function() { 
-          $("#myTable").tablesorter(); 
-        } 
-      ); 
-    
+
+      $(document).ready(function() {
+          $("#myTable").tablesorter();
+        }
+      );
+
       </script>
     </table>
 
