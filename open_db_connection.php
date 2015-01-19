@@ -11,5 +11,5 @@ $dbhandle = mysql_connect($hostname, $username, $password)
 $selected = mysql_select_db($db_name,$dbhandle)
 or die("Could not select " + $db_name);
 
-echo "Connected to MySQL database " . $db_name;
+echo "<!--Connected to MySQL database " . $db_name . "-->";
 ?>
