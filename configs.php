@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -13,11 +13,46 @@
 		<!--<a href="#" onclick="setAllCheckBoxes(true);" class="btn btn-default col-md-offset-1">Selecionar Todos</a>-->
 		<a href="#" onclick="setAllCheckBoxes(false);" class="btn btn-default col-md-offset-1">Limpar</a>
 		<table id="table-settings" class="table table-hover">
-			<th class="text-center">Config</th><th>Enable</th>
+			<th class="text-center col-md-1">Config</th><th>Enable</th>
+
+                                    <?php
+                                        // workaround to activate php error reporting
+                                        error_reporting(E_ALL); ini_set('display_errors', '1');
+
+                                        // loading the xml document
+                                        $xmlFileName = "resource/paciente_doentesNovos_2011'02'04'12h58min_backup.xml";
+                                        $doc = new DOMDocument();
+                                        $doc->load($xmlFileName);
+
+                                        // print the xml
+                                        //echo $doc->saveXML();
+
+                                        // get ALL the xml tags, except "doc" and "paciente"
+                                        $xpath = new DOMXpath( $doc );
+                                        $nodes = $xpath->query( '//*' );
+                                        $nodeNames = array();
+                                        foreach( $nodes as $node )
+                                        {
+                                            $nodeNames[ $node->nodeName ] = $node->nodeName;  // associentive array mode
+                                        }
+                                        unset($nodeNames["doc"]);
+                                        unset($nodeNames["paciente"]);
+
+                                        // prints the table rows
+                                        $rowsStr = "";
+                                        foreach ($nodeNames as $key) {
+                                            $rowsStr .= "<tr>";
+                                            //$rowsStr .= "<td class=\"text-center \">" + "<input id=\"" + key + "\" type=\"checkbox\" " + ((configs[key]) ? "checked":"") + "></td>";
+                                            $rowsStr .= "<td class=\"text-center \"><input id=\"" . $key . "\" type=\"checkbox\"></td>";
+                                            $rowsStr .= "<td>" . $key . "</td>";
+                                            $rowsStr .= "</tr>";
+                                        }
+                                        echo $rowsStr;
+                                    ?>
 		</table>
 	</body>
 
-	<script type="text/javascript">
+	<!--<script type="text/javascript">
 		$(document).ready(function() {
 
 			// global variable
@@ -26,7 +61,7 @@
       for(var key in configs){
       	var tr = "<tr" + ((!configs[key]) ? "":" class=\"success\"") + " onclick=\"check(" + key + ")\">";
 
-      	tr += "<td class=\"col-md-1 text-center \">" + "<input id=\"" + key + "\" type=\"checkbox\" " + ((configs[key]) ? "checked":"") + "></td>";
+      	tr += "<td class=\"text-center \">" + "<input id=\"" + key + "\" type=\"checkbox\" " + ((configs[key]) ? "checked":"") + "></td>";
       	tr += "<td>" + key + "</td>";
 
       	tr += "</tr>";
@@ -80,4 +115,5 @@
 		}
 
 	</script>
+    -->
 </html>
