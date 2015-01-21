@@ -13,7 +13,7 @@ require 'open_db_connection.php';
     <script type="text/JavaScript" src="libs/tablesorter/jquery.tablesorter.min.js"></script>
   </head>
  <body class="container">
-  <a href="configs.php" class="btn btn-primary">Edit Configs</a>
+  <a href="configs.php" class="btn btn-primary">Configs</a>
     <table class="table table-striped table-bordered table-condensed" id="myTable">
       <script type="text/javascript">
       /* GET ALL THE PROPERTIES FOUND ON PACIENTE AND PRINT ON HTML LIKE A JSON
